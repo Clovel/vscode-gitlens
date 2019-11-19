@@ -109,6 +109,9 @@ function getExtensionConfig(env) {
 		},
 		resolve: {
 			extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+			// alias: {
+			// 	'universal-user-agent': 'node_modules/universal-user-agent/dist-node/index.js'
+			// }
 		},
 		plugins: plugins,
 		stats: {

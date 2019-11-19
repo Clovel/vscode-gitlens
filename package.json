@@ -613,6 +613,12 @@
 					"markdownDescription": "Specifies which (and when) Git commands will skip the confirmation step, using the format: `git-command-name:(menu|command)`",
 					"scope": "window"
 				},
+				"gitlens.githubToken": {
+					"type": "string",
+					"description": "Specifies the GitHub personal access token to use for authentication with the GitHub GraphQL API",
+					"scope": "window",
+					"default": null
+				},
 				"gitlens.heatmap.ageThreshold": {
 					"type": "string",
 					"default": "90",
@@ -731,7 +737,7 @@
 				},
 				"gitlens.hovers.detailsMarkdownFormat": {
 					"type": "string",
-					"default": "${avatar} &nbsp;__${author}__, ${ago} &nbsp; _(${date})_ \n\n${message}\n\n${commands}",
+					"default": "${avatar} &nbsp;__${author}__${\" via \"pullRequest}, ${ago} &nbsp; _(${date})_ \n\n${message}\n\n${commands}",
 					"markdownDescription": "Specifies the format (in markdown) of the _commit details_ hover. See [_Commit Tokens_](https://github.com/eamodio/vscode-gitlens/wiki/Custom-Formatting#commit-tokens) in the GitLens docs",
 					"scope": "window"
 				},
@@ -5918,6 +5924,7 @@
 		"vscode:prepublish": "yarn run bundle"
 	},
 	"dependencies": {
+		"@octokit/graphql": "4.3.1",
 		"dayjs": "1.8.17",
 		"iconv-lite": "0.5.0",
 		"lodash-es": "4.17.15",
@@ -5927,8 +5934,8 @@
 		"@types/lodash-es": "4.17.3",
 		"@types/node": "10.14.22",
 		"@types/vscode": "1.37.0",
-		"@typescript-eslint/eslint-plugin": "2.7.0",
-		"@typescript-eslint/parser": "2.7.0",
+		"@typescript-eslint/eslint-plugin": "2.8.0",
+		"@typescript-eslint/parser": "2.8.0",
 		"circular-dependency-plugin": "5.2.0",
 		"clean-webpack-plugin": "3.0.0",
 		"csp-html-webpack-plugin": "3.0.4",
