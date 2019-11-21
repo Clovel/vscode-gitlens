@@ -2,14 +2,19 @@
 import { Disposable, Terminal, window } from 'vscode';
 import { extensionTerminalName } from './constants';
 import { Container } from './container';
+import { configuration } from './configuration'
 
 let _terminal: Terminal | undefined;
+let _terminalPath: string | undefined;
+let _terminalArgs: string | undefined;
 let _terminalCwd: string | undefined;
 let _disposable: Disposable | undefined;
 
 function ensureTerminal(cwd: string): Terminal {
 	if (_terminal === undefined) {
-		_terminal = window.createTerminal(extensionTerminalName);
+		_terminalPath = configuration.get().defaultTerminal;
+		_terminalArgs = configuration.get().defaultTerminalArgs;
+		_terminal = window.createTerminal(extensionTerminalName, _terminalPath, _terminalArgs);
 		_disposable = window.onDidCloseTerminal((e: Terminal) => {
 			if (e.name === extensionTerminalName) {
 				_terminal = undefined;
