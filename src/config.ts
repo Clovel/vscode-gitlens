@@ -33,6 +33,8 @@ export interface Config {
 	defaultDateSource: DateSource;
 	defaultDateStyle: DateStyle;
 	defaultGravatarsStyle: GravatarDefaultStyle;
+	defaultTerminal: string;
+	defaultTerminalArgs: string;
 	gitCommands: {
 		closeOnFocusOut: boolean;
 		search: {
